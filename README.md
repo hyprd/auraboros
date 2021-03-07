@@ -8,7 +8,7 @@ Windows-only.
 MinGW64 via [winlibs](http://winlibs.com/)
 
 ## Building
-Extract SDL2 
+Extract SDL2.
 
 Point the project makefile to your local *include* and *lib* directories.
 
