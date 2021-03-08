@@ -17,3 +17,5 @@ Point the project makefile to your local *include* and *lib* directories (you wa
 Start with `./main`.
 
 Make sure MinGW64 and the `bin` folder of SDL2 are on your PATH.
+
+If you want IntelliSense on vscode include your SDL2 directory in the `includePath` of `c_cpp_properties` and set the appropriate `compilerPath`
