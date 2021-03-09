@@ -1,13 +1,11 @@
 #define SDL_MAIN_HANDLED
-#include <SDL2/SDL.h>
-#include <iostream>
+#include "definitions.h"
 #include "mmu.h"
+
 
 //SDL_Window* gWindow;
 
 int main(int argc, char *args[]) {
-    mmu m;
-    m.readByte(0x4000);
     // if(SDL_Init(SDL_INIT_VIDEO) < 0) {
     //     printf("Failure!\n");
     //     return 1;

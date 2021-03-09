@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <vector>
+#include "definitions.h"
 
 class mmu {
 
@@ -31,9 +28,7 @@ class mmu {
         std::vector<uint8_t> ERAM;
         std::vector<uint8_t> OAM;
         std::vector<uint8_t> HRAM;
-
-        uint8_t readByte(uint16_t addr);
-        void writeByte(uint16_t addr, uint16_t val);
-
+        bool rangeCheck(uint16_t address, uint16_t lo, uint16_t hi);
+        uint16_t readByte(uint16_t address);
 
 };
