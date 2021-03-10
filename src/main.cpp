@@ -2,16 +2,8 @@
 #include "definitions.h"
 #include "mmu.h"
 
-
-//SDL_Window* gWindow;
-
-int main(int argc, char *args[]) {
-    // if(SDL_Init(SDL_INIT_VIDEO) < 0) {
-    //     printf("Failure!\n");
-    //     return 1;
-    // } else {
-    //     gWindow = SDL_CreateWindow("auraboros", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN );
-    //     SDL_Delay(3000);       
-    // }
+int main(int argc, char *argv[]) {
+    MMU* mmu = new MMU;
+    
     return 0;
 }
