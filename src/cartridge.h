@@ -1,8 +1,8 @@
-#include "definitions.h"
 #pragma once
 
 class Cartridge {
-    bool loadCartridge();
-    void disassembleCartridge();
-    void printCartridgeInfo();
+    public:
+        bool loadCartridge(char* name);
+        void disassembleCartridge();
+        void printCartridgeInfo();
 };

@@ -1,5 +1,5 @@
 GXX = g++
-DEPS =  src/main.cpp src/mmu.cpp
+DEPS =  src/main.cpp src/mmu.cpp src/cartridge.cpp
 ARGS = -g -Wall
 
 # Specify where SDL2's include and library are located here:

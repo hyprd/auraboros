@@ -1,8 +1,7 @@
 #define SDL_MAIN_HANDLED
 #include "definitions.h"
 #include "mmu.h"
-
-char* cartName; 
+#include "cartridge.h"
 
 int main(int argc, char *argv[]) {
     if(argc < 2) {
@@ -10,7 +9,14 @@ int main(int argc, char *argv[]) {
         printf("[ERROR] Usage: ./main [file]");
         return EXIT_FAILURE;
     }
+    Cartridge* cart = new Cartridge;
     MMU* mmu = new MMU; 
+    char* cartridgeName = argv[1];
+    if(!(cart->loadCartridge(cartridgeName))){
+
+    }
+    
+
     
     return 0;
 }
