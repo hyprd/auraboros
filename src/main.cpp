@@ -12,11 +12,11 @@ int main(int argc, char *argv[]) {
     Cartridge* cart = new Cartridge;
     MMU* mmu = new MMU; 
     char* cartridgeName = argv[1];
-    if(!(cart->loadCartridge(cartridgeName))){
-
+    if(!cart->loadCartridge(cartridgeName, mmu)) {
+        printf("[ERROR] Could not load cartridge\n");
+        return EXIT_FAILURE;
     }
-    
 
-    
-    return 0;
+
+    return EXIT_SUCCESS;
 }

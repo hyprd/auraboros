@@ -17,19 +17,20 @@ void Cartridge::printCartridgeInfo() {
 
 }
 
-bool Cartridge::loadCartridge(char* name) {
-    bool success = true;
-    // read ROM 
+bool Cartridge::loadCartridge(char* name, MMU* mmu) {
     FILE* f = fopen(name, "rb");
-    // get size of ROM
     if(f == 0) {
         printf("[ERROR] Could not find the file specified\n");
-        success = false;
+        return false;
     }
-    // start at beginning of stream, move to end 
-    // catch size of SEEK_END then reposition stream to the start
-    // bind file stream to MMU ROM
-    // inspect size
-    // close file 
-    return success;
+    fseek(f, 0, SEEK_END);
+    uint32_t sizeROM = ftell(f);
+    // reset the file pointer to the start
+    rewind(f);
+    if(fread(mmu->rom, 1, sizeROM, f) != sizeROM){
+        printf("[ERROR] ROM could not be loaded successfully\n");
+        return false;
+    }
+    fclose(f);
+    return true;
 }
