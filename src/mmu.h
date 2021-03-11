@@ -5,5 +5,6 @@ class MMU {
      public:
           MMU();
           uint8_t readByte(uint16_t address);
-          uint8_t memory[(int)65536];
+          uint8_t memory[MMU_MEMORY_SIZE];
+          uint8_t rom[ROM_SIZE];
 };
