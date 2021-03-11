@@ -1,36 +1,37 @@
 #include "cartridge.h"
 #include "definitions.h"
 
-void Cartridge::printCartridgeInfo() {
-    // Cartridge Title
-
-    // GB Type (CGB/GB)
-
-    // Cartridge Type
+void Cartridge::printCartridgeInfo(MMU* mmu) {
     // https://gbdev.io/pandocs/#_0147-cartridge-type
+    printf("----   ROM INFO   ----\nTitle: ");
+    std::cout << +title << std::endl;
+    if(strcmp(&gbType, "-128")) {
+        std::cout << "CGB Flag: 1" << std::endl;
+    } else {
+        std::cout << "CGB Flag: 0" << std::endl;
+    }
+    std::cout << "Cartridge Type: "<< +cartType << std::endl;
+    std::cout << "ROM Size: " << +sizeROM << std::endl;
+    std::cout << "RAM Size: " << +sizeRAM << std::endl;
 
-    // RAM Size
-
-    // ROM Size
-
-    // Japanese/non-japanese release
-
+    printf("\n----------------------");
 }
 
 bool Cartridge::loadCartridge(char* name, MMU* mmu) {
-    FILE* f = fopen(name, "rb");
-    if(f == 0) {
-        printf("[ERROR] Could not find the file specified\n");
-        return false;
-    }
-    fseek(f, 0, SEEK_END);
-    uint32_t sizeROM = ftell(f);
-    // reset the file pointer to the start
-    rewind(f);
-    if(fread(mmu->rom, 1, sizeROM, f) != sizeROM){
-        printf("[ERROR] ROM could not be loaded successfully\n");
-        return false;
-    }
-    fclose(f);
+    std::ifstream f (name, std::ios::binary);
+    if(f.is_open()) {
+        f.seekg(0x134);
+        f.read(title, 16);
+        // -------- CGB SUPPORT
+        // -128 ->  YES
+        // -64  ->  NO
+        f.seekg(0x143);
+        f.read(&gbType, 1);
+        // -------- CARTRIDGE TYPE
+        f.seekg(0x147);
+        f.read(&cartType, 1);
+        f.read(&sizeROM, 1);
+        f.read(&sizeRAM, 1);
+    }    
     return true;
 }

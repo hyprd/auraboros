@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <iostream>
-
+#include <fstream>
 #pragma once
 
 // 8MB maximum

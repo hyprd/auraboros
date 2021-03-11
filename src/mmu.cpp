@@ -18,9 +18,16 @@
             0xFFFF 0xFFFF - INTERRUPTS ENABLE REGISTER
     */
 
-   MMU::MMU() {}
+MMU::MMU() {}
 
-   uint8_t MMU::readByte(uint16_t address) {
-          return memory[address];
-   }
+void MMU::printROM() {
+     printf("Printing ROM:\n");
+     for(uint8_t d : memory) {
+          std::cout << +d << " ";
+     }
+}
+
+uint8_t MMU::readByte(uint16_t address) {
+     return memory[address];
+}
 

@@ -16,7 +16,6 @@ int main(int argc, char *argv[]) {
         printf("[ERROR] Could not load cartridge\n");
         return EXIT_FAILURE;
     }
-
-
+    cart->printCartridgeInfo(mmu);
     return EXIT_SUCCESS;
 }
