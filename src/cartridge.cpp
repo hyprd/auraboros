@@ -32,6 +32,12 @@ bool Cartridge::loadCartridge(char* name, MMU* mmu) {
         f.read(&cartType, 1);
         f.read(&sizeROM, 1);
         f.read(&sizeRAM, 1);
+
+        for(int i = 0x0000; i < 0x3FFF; i++) {
+            f.seekg(i);
+            f.read(&mmu->rom[i], 1);
+            //std::cout << +mmu->rom[i] << " " << i << std::endl;
+        }
     }    
     return true;
 }
